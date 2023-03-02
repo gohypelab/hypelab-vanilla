@@ -13,9 +13,11 @@ Start by including the `hypelab-vanilla` SDK in the head tag:
 
 ```html
 <head>
-  <script src="<PATH_TO_CDN>/hypelab-vanilla/index.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/gohypelab/hypelab-vanilla@vX.X.X/index.js"></script>
 </head>
 ```
+
+Note that the latest version can be found by looking on our public [Github page](https://github.com/gohypelab/hypelab-vanilla/tags).
 
 ### Initializing a client
 
