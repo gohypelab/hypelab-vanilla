@@ -25,12 +25,12 @@ Next, add a `<script>` tag and initialize a client using your `propertySlug`. Ca
 
 ```js
 <script>
-  let client = new HypeLab({
+  let client = new HypeLab.Client({
     URL: 'https://api.hypelab-staging.com',
     // URL: 'https://api.hypelab.com', /* Production URL */
     propertySlug: '<PROPERTY_SLUG>',
-    environment: Environment.Development,
-    // environment: Environment.Production /* Production Environment */
+    environment: HypeLab.Environment.Development,
+    // environment: HypeLab.Environment.Production, /* Production Environment */
   });
 
   HypeLab.setClient(client);
