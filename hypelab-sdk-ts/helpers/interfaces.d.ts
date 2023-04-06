@@ -29,6 +29,16 @@ export interface AdMetadata {
     creative_set_slug: string;
     creative_set_type: string;
     creative_set: CreativeSet;
+    fragment: Fragment;
+}
+export interface Fragment {
+    version: number;
+    format: string;
+    url: string;
+}
+export declare enum LoadError {
+    fragmentNotLoaded = 0,
+    metadataNotLoaded = 1
 }
 export interface ViewContext {
     client?: HypeLab;
@@ -36,6 +46,8 @@ export interface ViewContext {
 export interface ViewConfiguration {
     context?: ViewContext;
     placement: Placement;
+    fragment?: boolean;
+    onError?: (error: LoadError) => void;
 }
 export interface CreativeSet {
     [key: string]: string;
@@ -57,4 +69,8 @@ export declare namespace RequestParams {
 export interface DefaultAdProps {
     client: HypeLab;
     placement: Placement;
+}
+export interface Provider {
+    name: string;
+    version: string;
 }

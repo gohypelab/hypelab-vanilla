@@ -4,8 +4,8 @@ The HypeLab SDK is a JavaScript SDK for writing applications that interact with 
 
 ## Features
 
-- Exposes the HypeLab API through the HypeLab Client
-- Works in any Javascript front-end (TypeScript not yet supported for hypelab-vanilla)
+-   Exposes the HypeLab API through the HypeLab Client
+-   Works in any Javascript front-end (TypeScript not yet supported for hypelab-vanilla)
 
 ## React Integration Guide
 
@@ -13,7 +13,7 @@ Start by including the `hypelab-vanilla` SDK in the head tag:
 
 ```html
 <head>
-  <script src="https://cdn.jsdelivr.net/gh/gohypelab/hypelab-vanilla@vX.X.X/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/gohypelab/hypelab-vanilla@vX.X.X/index.js"></script>
 </head>
 ```
 
@@ -53,11 +53,11 @@ Now that your app is configured, you can start placing ads in any of your React 
 
 Banner ads are static placements that typically display image assets. If you're new to ads monetization, they are a great place to start!
 
-The `loadBanner` method allows the HypeLab SDK to identify where to insert the banner ad.
+The `banner` method allows the HypeLab SDK to identify where to insert the banner ad.
 
 ```html
 <script>
-  HypeLab.loadBanner({ placement: '<PLACEMENT_SLUG>', container: 'bannerSlot' });
+    HypeLab.banner({ placement: '<PLACEMENT_SLUG>', container: 'bannerSlot' });
 </script>
 ```
 
@@ -73,11 +73,11 @@ The size of the banner placement can be set during the placement creation proces
 
 Native ads are highly customizable ads that allow you to match the look and feel of an ad with the look and feel of your application. The following is an example Native component that uses the HypeLab SDK to render an ad template.
 
-The `loadNative` method allows the HypeLab SDK to identify your native template and insert the relevant ad content.
+The `native` method allows the HypeLab SDK to identify your native template and insert the relevant ad content.
 
 ```html
 <script>
-  HypeLab.loadNative({ placement: '<PLACEMENT_SLUG>', container: 'nativeSlot' });
+    HypeLab.native({ placement: '<PLACEMENT_SLUG>', container: 'nativeSlot' });
 </script>
 ```
 
@@ -85,31 +85,69 @@ Next, add the `Native` container you just referenced (in this case, `nativeSlot`
 
 ```html
 <div id="nativeSlot">
-  <div class="bg-black p-5">
-    <div class="relative flex items-center">
-      <div class="flex-shrink-0">
-        <img data-ref="icon" class="h-10 w-10 rounded-full mr-5" />
-      </div>
-      <div class="min-w-0 flex-1">
-        <span class="absolute inset-0" aria-hidden="true"></span>
-        <p class="font-medium text-slate-400">@<span data-ref="advertiser"></span></p>
-        <p data-ref="displayUrl" class="text-emerald-300 text-sm"></p>
-      </div>
-    </div>
-    <div data-ref="body" class="mt-3 text-white"></div>
-    <div class="body-row text-left">
-      <div data-ref="headline" class="mt-3 text-white"></div>
+    <div class="bg-black p-5">
+        <div class="relative flex items-center">
+            <div class="flex-shrink-0">
+                <img data-ref="icon" class="h-10 w-10 rounded-full mr-5" />
+            </div>
+            <div class="min-w-0 flex-1">
+                <span class="absolute inset-0" aria-hidden="true"></span>
+                <p class="font-medium text-slate-400">@<span data-ref="advertiser"></span></p>
+                <p data-ref="displayUrl" class="text-emerald-300 text-sm"></p>
+            </div>
+        </div>
+        <div data-ref="body" class="mt-3 text-white"></div>
+        <div class="body-row text-left">
+            <div data-ref="headline" class="mt-3 text-white"></div>
 
-      <div class="mt-5">
-        <a data-ref="ctaLink" href="/" target="_blank" rel="noreferrer">
-          <div data-ref="mediaContent" class="mediaContent"></div>
-          <div
-            data-ref="ctaText"
-            class="rounded-full bg-emerald-300 px-10 py-2 text-black font-bold mt-5 text-center"
-          ></div>
-        </a>
-      </div>
+            <div class="mt-5">
+                <a data-ref="ctaLink" href="/" target="_blank" rel="noreferrer">
+                    <div data-ref="mediaContent" class="mediaContent"></div>
+                    <div
+                        data-ref="ctaText"
+                        class="rounded-full bg-emerald-300 px-10 py-2 text-black font-bold mt-5 text-center"
+                    ></div>
+                </a>
+            </div>
+        </div>
     </div>
-  </div>
+</div>
+```
+
+### Rewarded
+
+Rewarded ads are served after a user explicitly chooses to view a rewarded ad. This puts the user in control of their in-app experience. Rewarded ads are shown to users in exchange for a reward that you control, such as an extra life or in-app currency. The best rewards are ones that are relevant to your users at the time they are deciding whether to opt-in to the rewarded experience.
+
+When a user chooses to opt-in to the rewarded experience, an ad will open in a full-screen overlay and the video will autoplay without sound. Once the video playback is done, a callback is fired to let you know that it's time to reward the user.
+
+The `rewarded` method allows the HypeLab SDK to identify where to insert the relevant ad content.
+
+```html
+<script>
+    const handleRewarded = function () {
+        // Grant a reward (e.g., Give an in-game item, unlock a paywall, etc.)
+        console.log('handleRewarded called');
+    };
+
+    var rewarded = HypeLab.rewarded({ placement: 'f31318b055', container: 'rewarded', onComplete: handleRewarded });
+
+    document.getElementById('hypelab-btn').addEventListener('click', function () {
+        rewarded.show();
+    });
+</script>
+```
+
+Like the other ad formats, you need to specify a container that we can inject code into. Additionally, you can pass in a method to be called `onComplete`, which will be called when the rewarded modal is dismissed.
+
+```html
+<div id="rewarded"></div>
+<div>
+    <button
+        id="hypelab-btn"
+        className="rounded-md border border-gray-300 bg-indigo-600 px-4 py-2 text-lg text-white"
+        data-cy="button"
+    >
+        Watch Video
+    </button>
 </div>
 ```

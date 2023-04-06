@@ -2,7 +2,7 @@ import { Environment } from '../util/interfaces';
 import { Identity } from './Identity';
 import { APIRequester } from './APIRequester';
 import { AliasAPI, EventAPI, RequestAPI } from './api';
-import { AdMetadata, CreativeSet, EventType } from '../helpers/interfaces';
+import { AdMetadata, CreativeSet, EventType, Provider } from '../helpers/interfaces';
 export { EventType };
 export { Environment };
 export type { AdMetadata };
@@ -23,6 +23,7 @@ export declare class HypeLab {
     event: EventAPI;
     request: RequestAPI;
     static instance: HypeLab;
+    static provider: Provider;
     constructor(config: ClientConfig);
     static setClient(client: HypeLab): void;
     private logInitialization;
