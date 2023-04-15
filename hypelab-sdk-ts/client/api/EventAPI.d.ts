@@ -1,6 +1,5 @@
 import { HypeLab } from '../Client';
 import { BaseAPI } from './BaseAPI';
-import { EventType } from '../Client';
 import { Placement, AdMetadata } from '../../helpers/interfaces';
 export interface EventParams {
     status: 'success' | 'error';
@@ -15,7 +14,7 @@ export declare namespace EventParams {
 export declare class EventAPI extends BaseAPI {
     client: HypeLab;
     constructor(client: HypeLab);
-    create(placement: Placement, campaign: AdMetadata, type: EventType, customParams?: {
+    create(placement: Placement, campaign: AdMetadata, eventType: any, customParams?: {
         [key: string]: number | string;
     }): Promise<EventParams.Data>;
 }

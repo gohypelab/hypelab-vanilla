@@ -1,4 +1,4 @@
-import { ViewConfiguration, AdMetadata, EventType } from '../../helpers/interfaces';
+import { ViewConfiguration, AdMetadata } from '../../helpers/interfaces';
 export { LayoutFragment } from './fragment';
 import { ComponentChild, ComponentChildren } from 'preact';
 export { useRef, useState, useEffect, useCallback, useReducer, useContext, useMemo } from 'preact/hooks';
@@ -24,7 +24,7 @@ export declare class LayoutView<T> {
     protected load(_: AdMetadata): void;
     protected renderComponent(component: ComponentChild, base?: HTMLElement): void;
     protected perform(action: string, result: T): void;
-    protected track(event: EventType): Promise<void>;
+    protected track(event: any): Promise<void>;
     private renderLayout;
     private renderFragment;
     private loadFragment;
