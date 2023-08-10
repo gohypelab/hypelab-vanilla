@@ -7,7 +7,7 @@ The HypeLab SDK is a JavaScript SDK for writing applications that interact with 
 -   Exposes the HypeLab API through the HypeLab Client
 -   Works in any Javascript front-end (TypeScript not yet supported for hypelab-vanilla)
 
-## Integration Guide
+## React Integration Guide
 
 Start by including the `hypelab-vanilla` SDK in the head tag:
 

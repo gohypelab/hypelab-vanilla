@@ -1,4 +1,4 @@
-import { HypeLab } from './Client';
+import { HypeLab } from './';
 export declare class Identity {
     uuid: string;
     walletAddresses?: Array<string>;

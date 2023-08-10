@@ -1,8 +1,4 @@
 import { HypeLab } from '../client';
-export declare enum Environment {
-    Development = 0,
-    Production = 1
-}
 export declare enum EventType {
     impression = 0,
     videoView = 1,
@@ -30,6 +26,7 @@ export interface AdMetadata {
     creative_set_type: string;
     creative_set: CreativeSet;
     fragment: Fragment;
+    as: string;
 }
 export interface Fragment {
     version: number;
@@ -72,5 +69,6 @@ export interface DefaultAdProps {
 }
 export interface Provider {
     name: string;
+    type: string;
     version: string;
 }

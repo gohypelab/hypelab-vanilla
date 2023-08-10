@@ -1,13 +1,13 @@
-import { FragmentAsset } from './fragment';
+import { Bundle } from './bundle';
 export declare enum SignatureStatus {
     verified = 0,
     invalid = 1,
     cannotVerify = 2
 }
 export declare class Signature {
-    private asset;
+    private bundle;
     private static pk?;
-    constructor(asset: FragmentAsset);
+    constructor(bundle: Bundle);
     verify(): Promise<SignatureStatus>;
     private fetch;
     private bytes;

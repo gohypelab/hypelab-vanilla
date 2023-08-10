@@ -1,2 +1,0 @@
-declare const VIDEO_VIEW_THRESHOLD = 0.25;
-export { VIDEO_VIEW_THRESHOLD };
