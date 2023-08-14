@@ -1,5 +1,5 @@
-import { LoadError } from './hypelab-sdk-ts';
-export { HypeLab, Environment } from './hypelab-sdk-ts';
+import { LoadError } from 'hypelab-sdk-ts';
+export { HypeLab, Environment } from 'hypelab-sdk-ts';
 export interface DefaultProps {
     placement: string;
     container: string;
