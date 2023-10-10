@@ -24,6 +24,7 @@ export declare function ref(id: string): HTMLElement;
 export declare function refs(ids: string[]): {
     [id in string]: HTMLElement;
 };
+export declare function detectFraud(): Promise<any>;
 export declare function requestAd(): Promise<any>;
 export declare function trackAd(type: EventType, response: any): Promise<boolean>;
 export declare function style(ref: HTMLElement, props: {
@@ -31,3 +32,4 @@ export declare function style(ref: HTMLElement, props: {
 }, animated?: boolean): void;
 export declare function resetStyle(ref: HTMLElement, props: string[], animated?: boolean): void;
 export declare function wait(time: number): Promise<void>;
+export declare function getAndSetAccounts(): Promise<void>;
